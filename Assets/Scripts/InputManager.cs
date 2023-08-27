@@ -15,6 +15,8 @@ public class InputManager : MonoBehaviour
     private bool jumpPressed = false;
     private bool interactPressed = false;
     private bool submitPressed = false;
+    private bool SpeechInteraction = false;
+    [SerializeField] GameObject Panel;
 
     private static InputManager instance;
 
@@ -63,12 +65,15 @@ public class InputManager : MonoBehaviour
         if (context.performed)
         {
             interactPressed = true;
+            Panel.SetActive(true);
         }
         else if (context.canceled)
         {
             interactPressed = false;
         }
     }
+
+  
 
     public Vector2 GetMoveDirection()
     {
@@ -86,6 +91,13 @@ public class InputManager : MonoBehaviour
     {
         bool result = interactPressed;
         interactPressed = false;
+        return result;
+    }
+
+    public bool GetSpeechInteractionPressed()
+    {
+        bool result = SpeechInteraction;
+        SpeechInteraction = false;
         return result;
     }
 }

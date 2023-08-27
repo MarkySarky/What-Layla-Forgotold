@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BloodVials : MonoBehaviour
 {
+    [SerializeField] private AudioSource collectabkle;
     public int value;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class BloodVials : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            collectabkle.Play();
             Destroy(gameObject);
             BloodVialsCollectibles.instance.IncreaseBloodVials(value);
         }
